@@ -2,7 +2,7 @@ const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const { kittenRouter } = require('./routes/kittenRouter');
+const kittenRouter = require('./routes/kittenRouter');
 
 const PORT = process.env.PORT || 3000;
 
