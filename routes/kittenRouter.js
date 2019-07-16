@@ -19,8 +19,26 @@ kittenRouter.get('/id/:id', async (req, res) => {
   res.json(kitten);
 });
 
+kittenRouter.destroy('/id/:id', async (req, res) => {
+  const kitten = await Kitten.destroy({
+    where: {
+      id: req.params.id,
+    };
+  });
+  res.json(kitten);
+});
+
 kittenRouter.get('/name/:name', async (req, res) => {
   const kitten = await Kitten.findOne({
+    where: {
+      name: req.params.name,
+    },
+  });
+  res.json(kitten);
+});
+
+kittenRouter.delete('/name/:name', async (req, res) => {
+  const kitten = await Kitten.destroy({
     where: {
       name: req.params.name,
     },
