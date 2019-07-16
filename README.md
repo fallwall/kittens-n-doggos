@@ -43,9 +43,19 @@ Test that hitting the `/kittens` and `/doggos` endpoints returns an empty array
 - Note how adding the same RESTful action is remarkably similar for each resource.  Appreciate this symmetry.
 
 ### Update
-- Now add an `UPDATE` route handler to both resources
+- Now add an `UPDATE` route handler to both resources. Reference today's [update lesson](https://git.generalassemb.ly/sei-nyc-pandas/update-lesson) if you forget how to do this.
 
 ### THE FRONT END
 Now that we have all our express routes set up and working, we can connect them to our front end so that users can easily interact with our app.
 
-Reference the [lab](https://git.generalassemb.ly/sei-nyc-pandas/croquet_demo) from today on how to connect your express and react apps.
+- Reference the [lab](https://git.generalassemb.ly/sei-nyc-pandas/croquet_demo) from today on how to connect your express and react apps.
+- Since we are dealing with two resources, let's use React Router to toggle between two different views: a Kitten form view and a Doggo form view
+- Think about how you want to structure this app. What are your components? Where are you creating your functions? What is held in state? Some suggestions are provided below...
+- You've done LOTS of update forms in React, so reference old homeworks and projects if you need a refresher! The main elements you need are:
+  - a form rendered on the page
+  - functions that handle the form change and form submit. the form submit can either use axios call functions from an `api-helper.js` file or directly in the components
+  - in state: a formData object; a kittens array; a doggos array
+  - 'edit' and 'delete' buttons on each rendered item
+
+
+
