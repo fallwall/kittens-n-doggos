@@ -3,7 +3,6 @@ const { Sequelize } = require('sequelize');
 const sequelize = new Sequelize({
   database: 'pets_lab_db',
   dialect: 'postgres',
-  operatorsAliases: false,
   define: {
     underscored: true
   }
