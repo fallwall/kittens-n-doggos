@@ -16,7 +16,6 @@ In this lab you will create a full-stack CRUD app in which the user can interact
 
 
 ### THE BACK END
-
 We will set up our express routes before handling them on the front end.
 
 ### The Router
@@ -30,13 +29,13 @@ We will set up our express routes before handling them on the front end.
 Test that hitting the `/kittens` and `/doggos` endpoints returns an empty array
 
 ### Create
-
 - add a `CREATE` route handler for each resource.
 - You can verify that `CREATE` works with `axios` in a `scratch.js` file
 - Also verify that the `INDEX` route returns a non-empty array after creating a few kittens and doggos
 
 ### Show
-- Add a `SHOW` route handler for each resource.
+- Add a `SHOW` route handler for each resource. `SHOW` is a type of route that only shows one item, rather than all (`INDEX`)
+- One `SHOW` route should be for ID (`/:id`); one should be for name (`/:name`)
 - Verify that `SHOW` works with `axios`
 
 ### Delete
@@ -44,11 +43,10 @@ Test that hitting the `/kittens` and `/doggos` endpoints returns an empty array
 - Note how adding the same RESTful action is remarkably similar for each resource.  Appreciate this symmetry.
 
 ### Update
-- Try adding an `UPDATE` route handler to both resources
+- Now add an `UPDATE` route handler to both resources
 
-
-### THE BACK END
-
+### THE FRONT END
 Now that we have all our express routes set up and working, we can connect them to our front end so that users can easily interact with our app.
 
-###
+### 
+
