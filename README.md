@@ -12,7 +12,7 @@ In this lab you will create a full-stack CRUD app in which the user can interact
 - `npm run resetDb`
 - `npm start` to start your back end server
 - run `create-react-app client` to create your front-end React app
-- `npm start` will start your front end server on another port
+- `cd` into clint and then `npm start` -- this will start your front end server on another port
 
 
 ### THE BACK END
@@ -48,5 +48,4 @@ Test that hitting the `/kittens` and `/doggos` endpoints returns an empty array
 ### THE FRONT END
 Now that we have all our express routes set up and working, we can connect them to our front end so that users can easily interact with our app.
 
-### 
-
+Reference the [lab](https://git.generalassemb.ly/sei-nyc-pandas/croquet_demo) from today on how to connect your express and react apps.
