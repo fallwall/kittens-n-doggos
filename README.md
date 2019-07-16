@@ -38,7 +38,7 @@ We will set up our express routes before handling them on the front end.
 
 ### Delete
 - Add a `DELETE` route handler.
-- Note how adding the same RESTful action is remarkably similar for each resource.  Appreciate this symmetry. :)
+- Note how adding the same RESTful action is remarkably similar for each resource.  Appreciate this symmetry.
 
 ### Update
 - Now add an `UPDATE` route handler. Reference today's [update lesson](https://git.generalassemb.ly/sei-nyc-pandas/update-lesson) if you forget how to do this.
