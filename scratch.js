@@ -1,12 +1,20 @@
 const axios = require('axios');
+const { Kitten } = require('./models');
 
 const main = async () => {
-  const resp = await axios.post('http://localhost:3000/kittens', {
+  await Kitten.destroy({
+    where: {},
+  });
+  const resp1 = await axios.post('http://localhost:3000/kittens', {
     name: 'roe',
     age: 2,
-    breed: 'vicious kind',
+    breed: 'taxedo cat',
   });
-  console.log(resp.data);
+  const resp2 = await axios.post('http://localhost:3000/kittens', {
+    name: 'simba',
+    age: 1,
+    breed: 'ginger cat',
+  });
 };
 
 main();

@@ -14,4 +14,18 @@ kittenRouter.post('/', async (req, res) => {
   res.json(newKitten);
 });
 
+kittenRouter.get('/id/:id', async (req, res) => {
+  const kitten = await Kitten.findByPk(req.params.id);
+  res.json(kitten);
+});
+
+kittenRouter.get('/name/:name', async (req, res) => {
+  const kitten = await Kitten.findOne({
+    where: {
+      name: req.params.name,
+    },
+  });
+  res.json(kitten);
+});
+
 module.exports = kittenRouter;
