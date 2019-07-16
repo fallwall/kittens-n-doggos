@@ -4,8 +4,8 @@ const sequelize = new Sequelize({
   database: 'pets_lab_db',
   dialect: 'postgres',
   define: {
-    underscored: true
-  }
+    underscored: true,
+  },
 });
 
 const Kitten = sequelize.define('kitten', {
