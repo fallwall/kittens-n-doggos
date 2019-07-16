@@ -1,4 +1,6 @@
-## Router Lab
+## Kittens and Doggos Router Lab!
+
+![](https://media.giphy.com/media/X6HWNLjWi9rw7PLVSO/giphy.gif)
 
 ### Introduction
 In this lab you will create a full-stack CRUD app in which the user can interact with Kitten and Doggo resources.
@@ -17,7 +19,7 @@ In this lab you will create a full-stack CRUD app in which the user can interact
 
 We will set up our express routes before handling them on the front end.
 
-#### The Router
+### The Router
 - We've already created a `routes/` directory for your with a `kittenRouter.js` and `doggoRouter.js`.
 - In each of these files, require `Router` with `const { Router } = require('express');`
 - Define a `kittenRouter` and `doggoRouter` with `Router()`
@@ -34,15 +36,19 @@ Test that hitting the `/kittens` and `/doggos` endpoints returns an empty array
 - Also verify that the `INDEX` route returns a non-empty array after creating a few kittens and doggos
 
 ### Show
-- Add a `SHOW` route handler for the `Kitten` resource.
+- Add a `SHOW` route handler for each resource.
 - Verify that `SHOW` works with `axios`
 
-
-
-
-## DELETE
+### Delete
 - Add a `DELETE` route handler for both the `Kitten` and `Doggo` resources
 - Note how adding the same RESTful action is remarkably similar for each resource.  Appreciate this symmetry.
 
-## Bonus
+### Update
 - Try adding an `UPDATE` route handler to both resources
+
+
+### THE BACK END
+
+Now that we have all our express routes set up and working, we can connect them to our front end so that users can easily interact with our app.
+
+###
