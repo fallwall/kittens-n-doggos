@@ -19,13 +19,31 @@ kittenRouter.get('/id/:id', async (req, res) => {
   res.json(kitten);
 });
 
-kittenRouter.destroy('/id/:id', async (req, res) => {
+kittenRouter.delete('/id/:id', async (req, res) => {
   const kitten = await Kitten.destroy({
     where: {
       id: req.params.id,
-    };
+    },
   });
   res.json(kitten);
+});
+
+kittenRouter.put('/id/:id', async (req, res) => {
+  try {
+    const data = req.body;
+    const kitten = await Kitten.update(
+      data,
+      {
+        where: {
+          id: req.params.id,
+        },
+      });
+    const updatedKitten = await Kitten.findByPk(req.params.id);
+    res.json(updatedKitten);
+  } catch (e) {
+    console.log(e.message);
+    res.status(500).send(e.message);
+  }
 });
 
 kittenRouter.get('/name/:name', async (req, res) => {
@@ -44,6 +62,28 @@ kittenRouter.delete('/name/:name', async (req, res) => {
     },
   });
   res.json(kitten);
+});
+
+kittenRouter.put('/name/:name', async (req, res) => {
+  try {
+    const data = req.body;
+    const kitten = await Kitten.update(
+      data,
+      {
+        where: {
+          name: req.params.name,
+        },
+      });
+    const updatedKitten = await Kitten.findOne({
+      where: {
+        name: req.params.name
+      },
+    })
+    res.json(updatedKitten);
+  } catch (e) {
+    console.log(e.message);
+    res.status(500).send(e.message);
+  }
 });
 
 module.exports = kittenRouter;
