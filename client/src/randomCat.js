@@ -76,7 +76,7 @@ const randomBreed = [
 
 const randomCat = () => {
   const name = randomName[Math.floor(Math.random() * randomName.length)];
-  const age = Math.ceiling(Math.random() * 16);
+  const age = Math.ceil(Math.random() * 16);
   const breed = randomBreed[Math.floor(Math.random() * randomBreed.length)];
   const newCat = {
     name: name,
