@@ -73,12 +73,13 @@ kittenRouter.put('/name/:name', async (req, res) => {
         where: {
           name: req.params.name,
         },
-      });
+      },
+    );
     const updatedKitten = await Kitten.findOne({
       where: {
-        name: req.params.name
+        name: req.params.name,
       },
-    })
+    });
     res.json(updatedKitten);
   } catch (e) {
     console.log(e.message);
