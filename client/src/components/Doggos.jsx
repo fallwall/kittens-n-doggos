@@ -169,7 +169,7 @@ export default class Doggos extends React.Component {
               key={d.id}>
               <h3>{d.name.toUpperCase()}</h3>
               <p>Age: {d.age}</p>
-              <p>Age: {d.breed}</p>
+              <p>Breed: {d.breed}</p>
               <button onClick={() => this.delete(d.id)}>Delete this Doggo</button>
               <button onClick={() => this.edit(d.id)}>Edit this Doggo</button>
               {this.state.editingId === d.id &&

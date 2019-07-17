@@ -153,7 +153,7 @@ export default class Kittens extends React.Component {
               key={k.id}>
               <h3>{k.name.toUpperCase()}</h3>
               <p>Age: {k.age}</p>
-              <p>Age: {k.breed}</p>
+              <p>Breed: {k.breed}</p>
               <button onClick={() => this.delete(k.id)}>Delete this Kitten</button>
               <button onClick={() => this.edit(k.id)}>Edit this Kitten</button>
               {this.state.editingId === k.id &&
