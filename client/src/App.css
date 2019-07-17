@@ -73,6 +73,11 @@ input, button {
   padding: 15px; 
 }
 
+/* .make2 button:hover {
+  color: white;
+  background-color: black;
+} */
+
 .make2 button {  
   margin: 2px;
   padding: 15px;  
