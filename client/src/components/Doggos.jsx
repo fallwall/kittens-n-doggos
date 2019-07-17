@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 
+import { randomDog } from '../randomDog';
+
 const colorfulConsole = () => {
   const colors = {
     "gray": "font-weight: bold; color: #1B2B34;",
@@ -129,6 +131,22 @@ export default class Doggos extends React.Component {
     })
   }
 
+
+  makeRandomDog = async () => {
+    const newDog = randomDog();
+    const resp = await axios.post(`http://localhost:3000/doggos/`, newDog);
+    const newDogData = resp.data;
+    this.setState(prevState => ({
+      doggos: [...prevState.doggos, newDogData],
+      newDog: {
+        name: "",
+        age: "",
+        breed: ""
+      },
+      isMakingCat: false
+    }))
+  };
+
   render() {
     return (
       <>
@@ -137,7 +155,7 @@ export default class Doggos extends React.Component {
         {this.state.isMakingDog &&
           (
             <div className="makeDoggo">
-              <form onSubmit={this.handleSubmitNew}>
+              <form>
                 <input
                   type="text"
                   name="name"
@@ -159,7 +177,8 @@ export default class Doggos extends React.Component {
                   value={this.state.newDog.breed}
                   onChange={this.handleChangeNew}
                 />
-                <button className="make2">Finish Making</button>
+              <button className="make2" onClick={this.handleSubmitNew}>Make this Dog</button>
+              <button className="make2" onClick={this.makeRandomDog}>Generate Random Dog</button>
               </form>
             </div>
           )}

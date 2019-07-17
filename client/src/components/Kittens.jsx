@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 
+import { randomCat } from '../randomCat';
+
 export default class Kittens extends React.Component {
   constructor() {
     super();
@@ -110,6 +112,21 @@ export default class Kittens extends React.Component {
     })
   }
 
+  makeRandomCat = async () => {
+    const newCat = randomCat();
+    const resp = await axios.post(`http://localhost:3000/kittens/`, newCat);
+    const newCatData = resp.data;
+    this.setState(prevState => ({
+      kittens: [...prevState.kittens, newCatData],
+      newCat: {
+        name: "",
+        age: "",
+        breed: ""
+      },
+      isMakingCat: false
+    }))
+  };
+
   render() {
     return (
       <>
@@ -117,7 +134,7 @@ export default class Kittens extends React.Component {
         <button onClick={this.makeCat} className="make">Make a Cat</button>
         {this.state.isMakingCat &&
           (<div className="makeKitten">
-            <form onSubmit={this.handleSubmitNew}>
+            <form>
               <input
                 type="text"
                 name="name"
@@ -139,7 +156,8 @@ export default class Kittens extends React.Component {
                 value={this.state.newCat.breed}
                 onChange={this.handleChangeNew}
               />
-              <button className="make2">Finish Making</button>
+              <button className="make2" onClick={this.handleSubmitNew}>Make this Cat</button>
+              <button className="make2" onClick={this.makeRandomCat}>Generate Random Cat</button>
 
             </form>
           </div>

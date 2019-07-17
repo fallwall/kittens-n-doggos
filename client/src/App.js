@@ -9,11 +9,12 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      
+      <header>
         <Link to="/">Home</Link>
         <Link to="/kittens">Kittens</Link>
         <Link to="/doggos">Doggos</Link>
-      
+        <h1>Die Kätzchen und Die Welpen</h1>
+      </header>
 
       <Route path="/" exact render={() => <Home />} />
       <Route path="/kittens" component={Kittens} />

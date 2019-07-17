@@ -3,16 +3,25 @@
 }
 
 a {
-  margin: 10px;
+  margin: 20px;
   text-decoration: none;
   color:black;
   font-weight: bold;
   font-size: 40px;
+  padding: 10px;
 }
 
 a:hover {
   background-color:black;
   color:white;
+}
+
+header h1{
+  font-size: 80px;
+  background-color: black;
+  color:white;
+  padding: 10px;
+  margin-top: -1px;
 }
 
 input, button {
@@ -64,4 +73,9 @@ input, button {
   border: solid 2px black;
   background: white;
   color: black;
+}
+
+.home h1 p {
+  text-align: left;
+  margin-left: 15vw;;
 }
