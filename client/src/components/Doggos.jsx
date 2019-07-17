@@ -45,7 +45,7 @@ export default class Doggos extends React.Component {
 
   getAllDoggos = async () => {
     const resp = await axios.get('http://localhost:3000/doggos');
-    const doggos = resp.data;
+    const doggos = resp.data.reverse();
 
     this.setState({
       doggos: doggos
@@ -110,7 +110,7 @@ export default class Doggos extends React.Component {
     const resp = await axios.post(`http://localhost:3000/doggos/`, newDog);
     const newDogData = resp.data;
     this.setState(prevState => ({
-      doggos: [...prevState.doggos, newDogData],
+      doggos: [newDogData, ...prevState.doggos],
       newDog: {
         name: "",
         age: "",
@@ -139,7 +139,7 @@ export default class Doggos extends React.Component {
     const resp = await axios.post(`http://localhost:3000/doggos/`, newDog);
     const newDogData = resp.data;
     this.setState(prevState => ({
-      doggos: [...prevState.doggos, newDogData],
+      doggos: [newDogData, ...prevState.doggos],
       newDog: {
         name: "",
         age: "",
@@ -163,35 +163,35 @@ export default class Doggos extends React.Component {
         <button onClick={this.makeDog} className="make">Make a Dog</button>
         {this.state.isMakingDog &&
           (
-          <div className="makeDoggo">
-            {this.state.isMakingOwnDog &&
-              (<form>
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="name of your dog"
-                  value={this.state.newDog.name}
-                  onChange={this.handleChangeNew}
-                />
-                <input
-                  type="number"
-                  name="age"
-                  placeholder="age of your dog"
-                  value={this.state.newDog.age}
-                  onChange={this.handleChangeNew}
-                />
-                <input
-                  type="text"
-                  name="breed"
-                  placeholder="breed of your dog"
-                  value={this.state.newDog.breed}
-                  onChange={this.handleChangeNew}
-                />
-                <button className="make2" onClick={this.handleSubmitNew}>Make this Dog</button>
-              </form>)}
+            <div className="makeDoggo">
+              {this.state.isMakingOwnDog &&
+                (<form>
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="name of your dog"
+                    value={this.state.newDog.name}
+                    onChange={this.handleChangeNew}
+                  />
+                  <input
+                    type="number"
+                    name="age"
+                    placeholder="age of your dog"
+                    value={this.state.newDog.age}
+                    onChange={this.handleChangeNew}
+                  />
+                  <input
+                    type="text"
+                    name="breed"
+                    placeholder="breed of your dog"
+                    value={this.state.newDog.breed}
+                    onChange={this.handleChangeNew}
+                  />
+                  <button className="make3" onClick={this.handleSubmitNew}>Make this Dog</button>
+                </form>)}
               <button className="make2" onClick={this.makeOwnDog}>Ente your Dog</button>
               <button className="make2" onClick={this.makeRandomDog}>Generate Random Dog</button>
-             
+
             </div>
           )}
         <div className="allDoggos">

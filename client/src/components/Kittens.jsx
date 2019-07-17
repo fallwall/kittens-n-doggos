@@ -26,7 +26,7 @@ export default class Kittens extends React.Component {
 
   getAllKittens = async () => {
     const resp = await axios.get('http://localhost:3000/kittens');
-    const kittens = resp.data;
+    const kittens = resp.data.reverse();
 
     this.setState({
       kittens: kittens
@@ -91,7 +91,7 @@ export default class Kittens extends React.Component {
     const resp = await axios.post(`http://localhost:3000/kittens/`, newCat);
     const newCatData = resp.data;
     this.setState(prevState => ({
-      kittens: [...prevState.kittens, newCatData],
+      kittens: [newCatData, ...prevState.kittens],
       newCat: {
         name: "",
         age: "",
@@ -119,7 +119,7 @@ export default class Kittens extends React.Component {
     const resp = await axios.post(`http://localhost:3000/kittens/`, newCat);
     const newCatData = resp.data;
     this.setState(prevState => ({
-      kittens: [...prevState.kittens, newCatData],
+      kittens: [newCatData, ...prevState.kittens],
       newCat: {
         name: "",
         age: "",
@@ -143,8 +143,8 @@ export default class Kittens extends React.Component {
         <button onClick={this.makeCat} className="make">Make a Cat</button>
         {this.state.isMakingCat &&
           (<div className="makeKitten">
-          {this.state.isMakingOwnCat && 
-          (<form>
+            {this.state.isMakingOwnCat &&
+              (<form>
                 <input
                   type="text"
                   name="name"
@@ -166,56 +166,56 @@ export default class Kittens extends React.Component {
                   value={this.state.newCat.breed}
                   onChange={this.handleChangeNew}
                 />
-                <button className="make2" onClick={this.handleSubmitNew}>Make this Cat</button>
-          </form>)}
-          <button className="make2" onClick={this.makeOwnCat}>Ente your Cat</button>
-                <button className="make2" onClick={this.makeRandomCat}>Generate Random Cat</button>
+                <button className="make3" onClick={this.handleSubmitNew}>Make this Cat</button>
+              </form>)}
+            <button className="make2" onClick={this.makeOwnCat}>Ente your Cat</button>
+            <button className="make2" onClick={this.makeRandomCat}>Generate Random Cat</button>
 
-              
+
           </div>
-            )
-          }
-  
-        <div className="allKittens">
-
-              {this.state.kittens.map(k =>
-                <div className="kitten"
-                  key={k.id}>
-                  <h3>{k.name.toUpperCase()}</h3>
-                  <p>Age: {k.age}</p>
-                  <p>Breed: {k.breed}</p>
-                  <button onClick={() => this.delete(k.id)}>Delete this Kitten</button>
-                  <button onClick={() => this.edit(k.id)}>Edit this Kitten</button>
-                  {this.state.editingId === k.id &&
-                    (<form onSubmit={this.handleSubmit}>
-                      <input
-                        type="text"
-                        name="name"
-                        placeholder="name of your cat"
-                        value={this.state.formData.name}
-                        onChange={this.handleChange}
-                      />
-                      <input
-                        type="number"
-                        name="age"
-                        placeholder="age of your cat"
-                        value={this.state.formData.age}
-                        onChange={this.handleChange}
-                      />
-                      <input
-                        type="text"
-                        name="breed"
-                        placeholder="breed of your cat"
-                        value={this.state.formData.breed}
-                        onChange={this.handleChange}
-                      />
-                      <button>Finished</button>
-                      <button onClick={this.handleCancel}>Cancel</button>
-                    </form>)}
-                </div>)}
-            </div>
-
-      </>
           )
         }
-        }
+
+        <div className="allKittens">
+
+          {this.state.kittens.map(k =>
+            <div className="kitten"
+              key={k.id}>
+              <h3>{k.name.toUpperCase()}</h3>
+              <p>Age: {k.age}</p>
+              <p>Breed: {k.breed}</p>
+              <button onClick={() => this.delete(k.id)}>Delete this Kitten</button>
+              <button onClick={() => this.edit(k.id)}>Edit this Kitten</button>
+              {this.state.editingId === k.id &&
+                (<form onSubmit={this.handleSubmit}>
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="name of your cat"
+                    value={this.state.formData.name}
+                    onChange={this.handleChange}
+                  />
+                  <input
+                    type="number"
+                    name="age"
+                    placeholder="age of your cat"
+                    value={this.state.formData.age}
+                    onChange={this.handleChange}
+                  />
+                  <input
+                    type="text"
+                    name="breed"
+                    placeholder="breed of your cat"
+                    value={this.state.formData.breed}
+                    onChange={this.handleChange}
+                  />
+                  <button>Finished</button>
+                  <button onClick={this.handleCancel}>Cancel</button>
+                </form>)}
+            </div>)}
+        </div>
+
+      </>
+    )
+  }
+}

@@ -62,11 +62,23 @@ input, button {
 }
 
 .make2 {
-  width: 100px;
-  border: none;
-  background: black;
-  color: white;
+  width: 150px;
+  height: 60px;
   border-radius: 3px;
+  border: solid black 2px;
+  color: black;
+  background-color: white;
+  display:inline;
+  margin: 2px;
+  padding: 15px; 
+}
+
+.make2 button {  
+  margin: 2px;
+  padding: 15px;  
+  border-radius: 3px;
+  font-size: 15px;
+  display:inline;
 }
 
 .make:hover, .doggo button:hover, .kitten button:hover, .make2:hover {
