@@ -4,6 +4,15 @@
 
 a {
   margin: 10px;
+  text-decoration: none;
+  color:black;
+  font-weight: bold;
+  font-size: 40px;
+}
+
+a:hover {
+  background-color:black;
+  color:white;
 }
 
 input, button {
@@ -43,7 +52,7 @@ input, button {
   font-size: 20px;
 }
 
-.make:hover {
+.make:hover .doggo button:hover, .kitten button:hover {
   border: solid 2px black;
   background: white;
   color: black;
