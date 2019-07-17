@@ -16,7 +16,8 @@ export default class Doggos extends React.Component {
         name: "",
         age: "",
         breed: ""
-      }
+      },
+      isMakingDog: false
     }
   }
 
@@ -92,40 +93,51 @@ export default class Doggos extends React.Component {
         name: "",
         age: "",
         breed: ""
-      }
+      },
+      isMakingDog: false
     }))
+  }
+
+  makeDog = () => {
+    this.setState({
+      isMakingDog: true
+    })
   }
 
   render() {
     return (
       <>
         <h1> DOGS NEEDS LOVE TOO</h1>
-        <div className="makeDoggo">
-          <form onSubmit={this.handleSubmitNew}>
-            <input
-              type="text"
-              name="name"
-              placeholder="name of your dog"
-              value={this.state.newDog.name}
-              onChange={this.handleChangeNew}
-            />
-            <input
-              type="number"
-              name="age"
-              placeholder="age of your dog"
-              value={this.state.newDog.age}
-              onChange={this.handleChangeNew}
-            />
-            <input
-              type="text"
-              name="breed"
-              placeholder="breed of your dog"
-              value={this.state.newDog.breed}
-              onChange={this.handleChangeNew}
-            />
-            <button>Make Your Dog</button>
-          </form>
-        </div>
+        <button onClick={this.makeDog}>Make a Dog</button>
+        {this.state.isMakingDog &&
+          (
+            <div className="makeDoggo">
+              <form onSubmit={this.handleSubmitNew}>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="name of your dog"
+                  value={this.state.newDog.name}
+                  onChange={this.handleChangeNew}
+                />
+                <input
+                  type="number"
+                  name="age"
+                  placeholder="age of your dog"
+                  value={this.state.newDog.age}
+                  onChange={this.handleChangeNew}
+                />
+                <input
+                  type="text"
+                  name="breed"
+                  placeholder="breed of your dog"
+                  value={this.state.newDog.breed}
+                  onChange={this.handleChangeNew}
+                />
+                <button>Make Your Dog</button>
+              </form>
+            </div>
+          )}
         <div className="allDoggos">
           {this.state.doggos.map(d =>
             <div className="doggo"

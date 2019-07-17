@@ -4,7 +4,7 @@ export default class Home extends React.Component {
   render() {
     return (
       <>
-        <h1> Home stuff</h1>
+        <h1> Not Inspired Enough to Do Visual Things </h1>
       </>
     )
   }

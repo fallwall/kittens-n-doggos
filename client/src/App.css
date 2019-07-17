@@ -5,3 +5,11 @@
 a {
   margin: 10px;
 }
+
+input, button {
+  display: block;
+}
+
+.doggo, .kitten {
+  width: 30vw;
+}

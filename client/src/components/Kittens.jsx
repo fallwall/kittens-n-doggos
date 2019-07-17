@@ -16,7 +16,8 @@ export default class Kittens extends React.Component {
         name: "",
         age: "",
         breed: ""
-      }
+      },
+      isMakingCat: false
     }
   }
 
@@ -92,15 +93,24 @@ export default class Kittens extends React.Component {
         name: "",
         age: "",
         breed: ""
-      }
+      },
+      isMakingCat: false
     }))
   }
+
+  makeCat = () => {
+    this.setState({
+      isMakingCat: true
+    })
+   }
 
   render() {
     return (
       <>
         <h1> SOUNDS LIKE A LOT OF WORK</h1>
-        <div className="makeKitten">
+        <button onClick={this.makeCat}>Make a Cat</button>
+        { this.state.isMakingCat &&
+        (<div className="makeKitten">
           <form onSubmit={this.handleSubmitNew}>
             <input
               type="text"
@@ -124,8 +134,12 @@ export default class Kittens extends React.Component {
               onChange={this.handleChangeNew}
             />
             <button>Make Your Cat</button>
+            
           </form>
         </div>
+         )
+            }   
+
         <div className="allKittens">
 
           {this.state.kittens.map(k =>
