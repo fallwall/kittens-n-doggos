@@ -3,6 +3,7 @@ const logger = require('morgan');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const kittenRouter = require('./routes/kittenRouter');
+const doggoRouter = require('./routes/doggoRouter');
 
 const PORT = process.env.PORT || 3000;
 
@@ -13,5 +14,6 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.get('/', (req, res) => res.json({ msg: 'ok' }));
 app.use('/kittens', kittenRouter);
+app.use('/doggos', doggoRouter);
 
 app.listen(PORT, () => console.log(`up and running on ${PORT}`));
