@@ -123,7 +123,7 @@ export default class Doggos extends React.Component {
     })
   }
 
-  handleCancel = () => { 
+  handleCancel = () => {
     this.setState({
       editingId: null
     })
@@ -132,7 +132,7 @@ export default class Doggos extends React.Component {
   render() {
     return (
       <>
-        <h1> DOGS NEEDS LOVE TOO</h1>
+        <h1> DOGS NEED LOVE TOO</h1>
         <button onClick={this.makeDog} className="make">Make a Dog</button>
         {this.state.isMakingDog &&
           (
@@ -195,8 +195,8 @@ export default class Doggos extends React.Component {
                     value={this.state.formData.breed}
                     onChange={this.handleChange}
                   />
-                <button>Finished</button>
-                <button onClick={this.handleCancel}>Cancel</button>
+                  <button>Finished</button>
+                  <button onClick={this.handleCancel}>Cancel</button>
                 </form>)}
             </div>)}
         </div>

@@ -113,7 +113,7 @@ export default class Kittens extends React.Component {
   render() {
     return (
       <>
-        <h1> SOUNDS LIKE A LOT OF WORK</h1>
+        <h1> KITTENS, MORE KITTENS</h1>
         <button onClick={this.makeCat} className="make">Make a Cat</button>
         {this.state.isMakingCat &&
           (<div className="makeKitten">
