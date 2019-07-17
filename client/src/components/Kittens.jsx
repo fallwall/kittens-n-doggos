@@ -97,7 +97,8 @@ export default class Kittens extends React.Component {
         age: "",
         breed: ""
       },
-      isMakingCat: false
+      isMakingCat: false,
+      isMakingOwnCat: false
     }))
   }
 

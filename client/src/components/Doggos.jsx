@@ -38,7 +38,8 @@ export default class Doggos extends React.Component {
         age: "",
         breed: ""
       },
-      isMakingDog: false
+      isMakingDog: false,
+      isMakingOwnDog: false
     }
   }
 
@@ -115,7 +116,8 @@ export default class Doggos extends React.Component {
         age: "",
         breed: ""
       },
-      isMakingDog: false
+      isMakingDog: false,
+      isMakingOwnDog: false
     }))
   }
 
@@ -143,9 +145,16 @@ export default class Doggos extends React.Component {
         age: "",
         breed: ""
       },
-      isMakingCat: false
+      isMakingDog: false,
+      isMakingOwnDog: false
     }))
   };
+
+  makeOwnDog = () => {
+    this.setState({
+      isMakingOwnDog: true
+    })
+  }
 
   render() {
     return (
@@ -154,8 +163,9 @@ export default class Doggos extends React.Component {
         <button onClick={this.makeDog} className="make">Make a Dog</button>
         {this.state.isMakingDog &&
           (
-            <div className="makeDoggo">
-              <form>
+          <div className="makeDoggo">
+            {this.state.isMakingOwnDog &&
+              (<form>
                 <input
                   type="text"
                   name="name"
@@ -177,9 +187,11 @@ export default class Doggos extends React.Component {
                   value={this.state.newDog.breed}
                   onChange={this.handleChangeNew}
                 />
-              <button className="make2" onClick={this.handleSubmitNew}>Make this Dog</button>
+                <button className="make2" onClick={this.handleSubmitNew}>Make this Dog</button>
+              </form>)}
+              <button className="make2" onClick={this.makeOwnDog}>Ente your Dog</button>
               <button className="make2" onClick={this.makeRandomDog}>Generate Random Dog</button>
-              </form>
+             
             </div>
           )}
         <div className="allDoggos">
