@@ -102,43 +102,49 @@ export default class Kittens extends React.Component {
     this.setState({
       isMakingCat: true
     })
-   }
+  }
+
+  handleCancel = () => {
+    this.setState({
+      editingId: null
+    })
+  }
 
   render() {
     return (
       <>
         <h1> SOUNDS LIKE A LOT OF WORK</h1>
-        <button onClick={this.makeCat}>Make a Cat</button>
-        { this.state.isMakingCat &&
-        (<div className="makeKitten">
-          <form onSubmit={this.handleSubmitNew}>
-            <input
-              type="text"
-              name="name"
-              placeholder="name of your cat"
-              value={this.state.newCat.name}
-              onChange={this.handleChangeNew}
-            />
-            <input
-              type="number"
-              name="age"
-              placeholder="age of your cat"
-              value={this.state.newCat.age}
-              onChange={this.handleChangeNew}
-            />
-            <input
-              type="text"
-              name="breed"
-              placeholder="breed of your cat"
-              value={this.state.newCat.breed}
-              onChange={this.handleChangeNew}
-            />
-            <button>Make Your Cat</button>
-            
-          </form>
-        </div>
-         )
-            }   
+        <button onClick={this.makeCat} className="make">Make a Cat</button>
+        {this.state.isMakingCat &&
+          (<div className="makeKitten">
+            <form onSubmit={this.handleSubmitNew}>
+              <input
+                type="text"
+                name="name"
+                placeholder="name of your cat"
+                value={this.state.newCat.name}
+                onChange={this.handleChangeNew}
+              />
+              <input
+                type="number"
+                name="age"
+                placeholder="age of your cat"
+                value={this.state.newCat.age}
+                onChange={this.handleChangeNew}
+              />
+              <input
+                type="text"
+                name="breed"
+                placeholder="breed of your cat"
+                value={this.state.newCat.breed}
+                onChange={this.handleChangeNew}
+              />
+              <button>Make Your Cat</button>
+
+            </form>
+          </div>
+          )
+        }
 
         <div className="allKittens">
 
@@ -174,6 +180,7 @@ export default class Kittens extends React.Component {
                     onChange={this.handleChange}
                   />
                   <button>Finished</button>
+                  <button onClick={this.handleCancel}>Cancel</button>
                 </form>)}
             </div>)}
         </div>
