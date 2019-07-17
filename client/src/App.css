@@ -52,7 +52,15 @@ input, button {
   font-size: 20px;
 }
 
-.make:hover, .doggo button:hover, .kitten button:hover {
+.make2 {
+  width: 100px;
+  border: none;
+  background: black;
+  color: white;
+  border-radius: 3px;
+}
+
+.make:hover, .doggo button:hover, .kitten button:hover, .make2:hover {
   border: solid 2px black;
   background: white;
   color: black;

@@ -139,7 +139,7 @@ export default class Kittens extends React.Component {
                 value={this.state.newCat.breed}
                 onChange={this.handleChangeNew}
               />
-              <button>Make Your Cat</button>
+              <button className="make2">Finish Making</button>
 
             </form>
           </div>

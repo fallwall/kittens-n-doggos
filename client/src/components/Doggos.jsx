@@ -159,7 +159,7 @@ export default class Doggos extends React.Component {
                   value={this.state.newDog.breed}
                   onChange={this.handleChangeNew}
                 />
-                <button>Make Your Dog</button>
+                <button className="make2">Finish Making</button>
               </form>
             </div>
           )}
