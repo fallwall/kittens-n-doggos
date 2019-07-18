@@ -1,4 +1,4 @@
-Project @ SEI
+One day project @ SEI
 
 Create Kitten and Doggo Database.
 React front end. Express back end.
