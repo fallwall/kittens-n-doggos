@@ -3,6 +3,8 @@ import axios from 'axios';
 
 import { randomCat } from '../randomCat';
 
+const BASE_URL = 'http://localhost:3000';
+
 export default class Kittens extends React.Component {
   constructor() {
     super();
@@ -25,7 +27,7 @@ export default class Kittens extends React.Component {
   }
 
   getAllKittens = async () => {
-    const resp = await axios.get('http://localhost:3000/kittens');
+    const resp = await axios.get(`${BASE_URL}/kittens`);
     const kittens = resp.data.reverse();
 
     this.setState({
@@ -56,7 +58,7 @@ export default class Kittens extends React.Component {
   handleSubmit = async (ev) => {
     ev.preventDefault();
     const newCat = this.state.formData;
-    const resp = await axios.put(`http://localhost:3000/kittens/id/${this.state.editingId}`, newCat);
+    const resp = await axios.put(`${BASE_URL}/kittens/id/${this.state.editingId}`, newCat);
     this.setState(prevState => ({
       kittens: prevState.kittens.map(k => (k.id === resp.data.id ? resp.data : k)),
       formData: {
@@ -69,7 +71,7 @@ export default class Kittens extends React.Component {
   }
 
   delete = async (id) => {
-    await axios.delete(`http://localhost:3000/kittens/id/${id}`);
+    await axios.delete(`${BASE_URL}/kittens/id/${id}`);
     this.setState(prevState => ({
       kittens: prevState.kittens.filter(k => k.id !== id)
     }));
@@ -88,7 +90,7 @@ export default class Kittens extends React.Component {
   handleSubmitNew = async (ev) => {
     ev.preventDefault();
     const newCat = this.state.newCat;
-    const resp = await axios.post(`http://localhost:3000/kittens/`, newCat);
+    const resp = await axios.post(`${BASE_URL}/kittens/`, newCat);
     const newCatData = resp.data;
     this.setState(prevState => ({
       kittens: [newCatData, ...prevState.kittens],
@@ -116,7 +118,7 @@ export default class Kittens extends React.Component {
 
   makeRandomCat = async () => {
     const newCat = randomCat();
-    const resp = await axios.post(`http://localhost:3000/kittens/`, newCat);
+    const resp = await axios.post(`${BASE_URL}/kittens/`, newCat);
     const newCatData = resp.data;
     this.setState(prevState => ({
       kittens: [newCatData, ...prevState.kittens],

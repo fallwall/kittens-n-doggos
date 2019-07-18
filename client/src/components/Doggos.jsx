@@ -4,6 +4,8 @@ import axios from 'axios';
 import { randomDog } from '../randomDog';
 import { colorfulConsole } from '../colorfulConsole';
 
+const BASE_URL = 'http://localhost:3000';
+
 export default class Doggos extends React.Component {
   constructor() {
     super();
@@ -26,7 +28,7 @@ export default class Doggos extends React.Component {
   }
 
   getAllDoggos = async () => {
-    const resp = await axios.get('http://localhost:3000/doggos');
+    const resp = await axios.get(`${BASE_URL}/doggos`);
     const doggos = resp.data.reverse();
 
     this.setState({
@@ -57,7 +59,7 @@ export default class Doggos extends React.Component {
   handleSubmit = async (ev) => {
     ev.preventDefault();
     const newDog = this.state.formData;
-    const resp = await axios.put(`http://localhost:3000/doggos/id/${this.state.editingId}`, newDog);
+    const resp = await axios.put(`${BASE_URL}/doggos/id/${this.state.editingId}`, newDog);
     this.setState(prevState => ({
       doggos: prevState.doggos.map(d => (d.id === resp.data.id ? resp.data : d)),
       formData: {
@@ -70,7 +72,7 @@ export default class Doggos extends React.Component {
   }
 
   delete = async (id) => {
-    await axios.delete(`http://localhost:3000/doggos/id/${id}`);
+    await axios.delete(`${BASE_URL}/doggos/id/${id}`);
     this.setState(prevState => ({
       doggos: prevState.doggos.filter(d => d.id !== id)
     }));
@@ -89,7 +91,7 @@ export default class Doggos extends React.Component {
   handleSubmitNew = async (ev) => {
     ev.preventDefault();
     const newDog = this.state.newDog;
-    const resp = await axios.post(`http://localhost:3000/doggos/`, newDog);
+    const resp = await axios.post(`${BASE_URL}/doggos/`, newDog);
     const newDogData = resp.data;
     this.setState(prevState => ({
       doggos: [newDogData, ...prevState.doggos],
@@ -117,7 +119,7 @@ export default class Doggos extends React.Component {
 
   makeRandomDog = async () => {
     const newDog = randomDog();
-    const resp = await axios.post(`http://localhost:3000/doggos/`, newDog);
+    const resp = await axios.post(`${BASE_URL}/doggos/`, newDog);
     const newDogData = resp.data;
     this.setState(prevState => ({
       doggos: [newDogData, ...prevState.doggos],

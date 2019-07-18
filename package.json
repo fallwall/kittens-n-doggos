@@ -21,5 +21,8 @@
     "nodemon": "^1.18.10",
     "pg": "^7.8.2",
     "sequelize": "^4.43.0"
+  },
+  "devDependencies": {
+    "surge": "^0.21.3"
   }
 }

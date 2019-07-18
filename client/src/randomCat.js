@@ -86,7 +86,6 @@ const randomCat = () => {
   return newCat;
 };
 
-
 module.exports = {
   randomCat
 }
