@@ -11,3 +11,4 @@ body-parser
 morgan
 sequelize
 express
+nodemon
