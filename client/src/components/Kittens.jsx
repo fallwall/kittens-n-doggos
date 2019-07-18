@@ -136,6 +136,13 @@ export default class Kittens extends React.Component {
     })
   }
 
+  handleCancelNew = () => { 
+    this.setState({
+      isMakingCat: false,
+      isMakingOwnCat: false
+    })
+  }
+
   render() {
     return (
       <>
@@ -167,7 +174,8 @@ export default class Kittens extends React.Component {
                   value={this.state.newCat.breed}
                   onChange={this.handleChangeNew}
                 />
-                <button className="make3" onClick={this.handleSubmitNew}>Finalize</button>
+            <button className="make3" onClick={this.handleSubmitNew}>Finalize</button>
+            <button className="make3" onClick={this.handleCancelNew}>Cancel</button>
             </form>)}
           {!this.state.isMakingOwnCat &&
             <button className="make2" onClick={this.makeOwnCat}>Customize your Cat</button>}
@@ -188,8 +196,10 @@ export default class Kittens extends React.Component {
               <h3>{k.name.toUpperCase()}</h3>
               <p>Age: {k.age}</p>
               <p>Breed: {k.breed}</p>
-              <button onClick={() => this.delete(k.id)}>Delete this Kitten</button>
-              <button onClick={() => this.edit(k.id)}>Edit this Kitten</button>
+              {this.state.editingId !== k.id &&
+                <button onClick={() => this.delete(k.id)}>Delete this Kitten</button>}
+              {this.state.editingId !== k.id &&
+                <button onClick={() => this.edit(k.id)}>Edit this Kitten</button>}
               {this.state.editingId === k.id &&
                 (<form onSubmit={this.handleSubmit}>
                   <input
@@ -213,8 +223,8 @@ export default class Kittens extends React.Component {
                     value={this.state.formData.breed}
                     onChange={this.handleChange}
                   />
-                  <button>Finished</button>
-                  <button onClick={this.handleCancel}>Cancel</button>
+                  <button className="update">Finished</button>
+                  <button className="update" onClick={this.handleCancel}>Cancel</button>
                 </form>)}
             </div>)}
         </div>

@@ -137,6 +137,13 @@ export default class Doggos extends React.Component {
     })
   }
 
+  handleCancelNew = () => { 
+    this.setState({
+      isMakingDog: false,
+      isMakingOwnDog: false
+    })
+  }
+
   render() {
     return (
       <>
@@ -169,7 +176,8 @@ export default class Doggos extends React.Component {
                     value={this.state.newDog.breed}
                     onChange={this.handleChangeNew}
                   />
-                  <button className="make3" onClick={this.handleSubmitNew}>Finalize</button>
+              <button className="make3" onClick={this.handleSubmitNew}>Finalize</button>
+              <button className="make3" onClick={this.handleCancelNew}>Cancel</button>
               </form>)}
             {!this.state.isMakingOwnDog &&
               <button className="make2" onClick={this.makeOwnDog}>Customize your Dog</button>}
@@ -183,10 +191,12 @@ export default class Doggos extends React.Component {
             <div className="doggo"
               key={d.id}>
               <h3>{d.name.toUpperCase()}</h3>
-              <p>Age: {d.age}</p>
-              <p>Breed: {d.breed}</p>
-              <button onClick={() => this.delete(d.id)}>Delete this Doggo</button>
-              <button onClick={() => this.edit(d.id)}>Edit this Doggo</button>
+              <p><strong>Age:</strong> {d.age}</p>
+              <p><strong>Breed:</strong> {d.breed}</p>
+              {this.state.editingId !== d.id &&
+                <button onClick={() => this.delete(d.id)}>Delete this Doggo</button>}
+              {this.state.editingId !== d.id &&
+                <button onClick={() => this.edit(d.id)}>Edit this Doggo</button>}
               {this.state.editingId === d.id &&
                 (<form onSubmit={this.handleSubmit}>
                   <input
@@ -210,8 +220,8 @@ export default class Doggos extends React.Component {
                     value={this.state.formData.breed}
                     onChange={this.handleChange}
                   />
-                  <button>Finished</button>
-                  <button onClick={this.handleCancel}>Cancel</button>
+                  <button className="update">Finished</button>
+                  <button className="update" onClick={this.handleCancel}>Cancel</button>
                 </form>)}
             </div>)}
         </div>
