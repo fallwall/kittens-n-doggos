@@ -40,7 +40,7 @@ export default class Home extends React.Component {
     return (
       <div className="home">
         <br />
-        <h1>{this.state.messages.map(m => <p>{m}</p>)}</h1>
+        <h1>{this.state.messages.map(m => <p key={m}>{m}</p>)}</h1>
         
       </div>
     )

@@ -140,7 +140,8 @@ export default class Kittens extends React.Component {
     return (
       <>
         <h1> KITTENS, MORE KITTENS</h1>
-        <button onClick={this.makeCat} className="make">Make a Cat</button>
+        {!this.state.isMakingCat &&
+          (<button onClick={this.makeCat} className="make">Make a Cat</button>)}
         {this.state.isMakingCat &&
           (<div className="makeKitten">
             {this.state.isMakingOwnCat &&
@@ -166,10 +167,13 @@ export default class Kittens extends React.Component {
                   value={this.state.newCat.breed}
                   onChange={this.handleChangeNew}
                 />
-                <button className="make3" onClick={this.handleSubmitNew}>Make this Cat</button>
-              </form>)}
-            <button className="make2" onClick={this.makeOwnCat}>Ente your Cat</button>
-            <button className="make2" onClick={this.makeRandomCat}>Generate Random Cat</button>
+                <button className="make3" onClick={this.handleSubmitNew}>Finalize</button>
+            </form>)}
+          {!this.state.isMakingOwnCat &&
+            <button className="make2" onClick={this.makeOwnCat}>Customize your Cat</button>}
+          {!this.state.isMakingOwnCat &&
+            <button className="make2" onClick={this.makeRandomCat}>Generate Random Cat</button>}
+            
 
 
           </div>

@@ -141,7 +141,8 @@ export default class Doggos extends React.Component {
     return (
       <>
         <h1> DOGS NEED LOVE TOO</h1>
-        <button onClick={this.makeDog} className="make">Make a Dog</button>
+        {!this.state.isMakingDog &&
+          (<button onClick={this.makeDog} className="make">Make a Dog</button>)}
         {this.state.isMakingDog &&
           (
             <div className="makeDoggo">
@@ -168,10 +169,12 @@ export default class Doggos extends React.Component {
                     value={this.state.newDog.breed}
                     onChange={this.handleChangeNew}
                   />
-                  <button className="make3" onClick={this.handleSubmitNew}>Make this Dog</button>
-                </form>)}
-              <button className="make2" onClick={this.makeOwnDog}>Ente your Dog</button>
-              <button className="make2" onClick={this.makeRandomDog}>Generate Random Dog</button>
+                  <button className="make3" onClick={this.handleSubmitNew}>Finalize</button>
+              </form>)}
+            {!this.state.isMakingOwnDog &&
+              <button className="make2" onClick={this.makeOwnDog}>Customize your Dog</button>}
+            {!this.state.isMakingOwnDog &&
+              <button className="make2" onClick={this.makeRandomDog}>Generate Random Dog</button>}
 
             </div>
           )}
